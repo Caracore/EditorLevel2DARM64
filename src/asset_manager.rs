@@ -35,6 +35,23 @@ impl AssetManager {
             tileset_counter: 0,
         }
     }
+    
+    /// Obtient les métadonnées de tous les tilesets pour la sauvegarde
+    pub fn get_metadata(&self) -> Vec<crate::project::TilesetMetadata> {
+        self.tilesets
+            .iter()
+            .enumerate()
+            .map(|(id, tileset)| crate::project::TilesetMetadata {
+                id,
+                name: tileset.name.clone(),
+                path: tileset.path.to_string_lossy().to_string(),
+                tile_width: tileset.tile_width,
+                tile_height: tileset.tile_height,
+                columns: tileset.columns,
+                rows: tileset.rows,
+            })
+            .collect()
+    }
 
     /// Charge un nouveau tileset depuis un fichier image
     pub fn load_tileset(

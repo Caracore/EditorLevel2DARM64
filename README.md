@@ -4,14 +4,22 @@ Un éditeur de niveaux professionnel pour créer des maps de jeux RPG 2D, compat
 
 ## 🎮 Fonctionnalités
 
-### 🖼️ Gestion des Tilesets (NOUVEAU!)
+### � Système de Projet Complet (NOUVEAU! ⭐)
+- **Format `.editorproj`** : Sauvegarde le niveau ET les tilesets ensemble
+- **Rechargement automatique** : Les tilesets se chargent automatiquement avec le niveau
+- **Workflow professionnel** : Travaillez sur vos projets sans recharger manuellement
+- **Compatibilité .json** : Les anciens fichiers JSON restent supportés
+- **Voir le guide** : [GUIDE_PROJETS.md](GUIDE_PROJETS.md) pour tous les détails
+
+### 🖼️ Gestion des Tilesets
 - **Charger des images** : Importez vos propres tilesets (PNG, JPG, JPEG)
 - **Découpage automatique** : Les tilesets sont automatiquement découpés en tiles de 16x16 pixels
 - **Sélection visuelle** : Choisissez les tiles directement dans une grille visuelle interactive
 - **Prévisualisation** : Voir le tile sélectionné en temps réel avant de le placer
 - **Support multi-tilesets** : Chargez plusieurs tilesets simultanément
+- **Persistance** : Les tilesets sont sauvegardés dans les fichiers `.editorproj`
 
-### 🎨 Sélecteur de Couleur Personnalisé (NOUVEAU!)
+### 🎨 Sélecteur de Couleur Personnalisé
 - **Sliders RGB** : Ajustez Rouge, Vert, Bleu avec des sliders (0-255)
 - **Code hexadécimal** : Entrez directement un code couleur HTML (#RRGGBB ou #RGB)
 - **Palette prédéfinie** : 12+ couleurs courantes pour démarrer rapidement
@@ -20,12 +28,21 @@ Un éditeur de niveaux professionnel pour créer des maps de jeux RPG 2D, compat
 
 ### Interface graphique intuitive
 
-- **Système de calques avancé** :
-  - Calques multiples (Background, Main, Foreground par défaut)
+- **Système de calques ultra-flexible** :
+  - Nombre de calques ajustable (de 1 à autant que nécessaire)
+  - Configuration dédiée : Menu Édition → ⚙️ Configuration des calques
+  - Renommage en direct de chaque calque
   - Ajouter/Supprimer des calques dynamiquement
   - Réorganiser les calques avec ⬆⬇
   - Contrôle de visibilité individuel (👁)
+  - Presets intégrés : Minimal (3), Standard (5), Parallax (7)
   - Design en profondeur pour des maps de qualité professionnelle
+
+- **Configuration du canvas** :
+  - Taille ajustable : 10x10 à 1000x1000 tiles
+  - Presets : Petit (32x24), Moyen (64x48), Grand (128x96), Énorme (256x256)
+  - Canvas quasi-infini possible pour mondes ouverts
+  - Menu Affichage → ⚙️ Configuration du Canvas
   
 - **Outils d'édition**:
   - ✏️ Pinceau pour placer des tiles (couleurs ou textures)
@@ -57,8 +74,52 @@ cargo run --release
 
 ## 🎨 Utilisation
 
+### 🔄 Workflow : Créer, Sauvegarder, Rééditer
+
+#### Créer un nouveau niveau
+1. **Fichier** → **📁 Nouveau** : Crée un niveau vierge (64x48, tiles 16px)
+2. Dessinez votre map avec couleurs et/ou tilesets
+3. Utilisez plusieurs calques pour la profondeur
+
+#### Sauvegarder votre travail
+1. **Fichier** → **💾 Sauvegarder**
+2. Choisissez un nom (ex: `mon_niveau.json`)
+3. ✅ Notification : "Niveau sauvegardé : mon_niveau.json"
+4. Le fichier est prêt à être utilisé dans votre jeu !
+
+#### Charger et rééditer une map existante
+
+**💡 RECOMMANDÉ : Utilisez le format `.editorproj` !**
+
+##### Option 1 : Projet Complet (.editorproj) ⭐
+1. **Fichier** → **📂 Charger** → **📦 Projet Complet (.editorproj)**
+2. Sélectionnez votre fichier `.editorproj`
+3. ✅ **Tout se charge automatiquement** : niveau + tilesets + couleurs
+4. Continuez l'édition immédiatement
+5. Sauvegardez avec **💾 Sauvegarder** → **📦 Projet Complet (.editorproj)**
+
+##### Option 2 : Niveau seul (.json)
+1. **Fichier** → **📂 Charger** → **📄 Niveau seul (.json)**
+2. Sélectionnez votre fichier JSON
+3. ⚠️ Les couleurs se chargent, mais **pas les tilesets**
+4. Rechargez manuellement vos tilesets via **Assets → Charger Tileset**
+5. Pour éviter cela à l'avenir, sauvegardez en `.editorproj`
+
+**Note :** Le nom du fichier chargé s'affiche dans la barre du bas 📂
+
+📖 **Guide complet** : [GUIDE_PROJETS.md](GUIDE_PROJETS.md)
+📖 **Détails techniques** : [GUIDE_CHARGER.md](GUIDE_CHARGER.md)
+
 ### Barre de menu
-- **Fichier** : Nouveau, Sauvegarder, Charger, Quitter
+- **Fichier** : 
+  - 📁 Nouveau : Créer un niveau vierge
+  - 💾 Sauvegarder : 
+    - **📦 Projet Complet (.editorproj)** ← Recommandé
+    - 📄 Niveau seul (.json)
+  - 📂 Charger : 
+    - **📦 Projet Complet (.editorproj)** ← Recommandé
+    - 📄 Niveau seul (.json)
+  - ❌ Quitter
 - **Édition** : 
   - Effacer le calque actuel
   - ➕ Ajouter un calque
@@ -95,9 +156,56 @@ cargo run --release
 - **Clic molette + glisser** : Déplacer la vue
 - **Molette** : Zoom in/out
 
-## 📁 Format de fichier
+## 📁 Formats de fichier
 
-Les niveaux sont sauvegardés en JSON avec cette structure :
+### Format `.editorproj` (Projet Complet) ⭐
+
+Le format **recommandé** pour travailler. Il contient le niveau ET les références aux tilesets :
+
+```json
+{
+  "version": "1.0",
+  "level": {
+    "name": "Mon Niveau",
+    "width": 64,
+    "height": 48,
+    "tile_size": 16,
+    "layers": [
+      {
+        "name": "Background",
+        "visible": true,
+        "opacity": 1.0,
+        "tiles": {
+          "0,0": {"Color": [139, 69, 19]},
+          "1,0": {"Texture": {"tileset_id": 0, "tile_index": 5}},
+          "2,0": {"Color": [255, 0, 0]}
+        }
+      }
+    ]
+  },
+  "tilesets": [
+    {
+      "id": 0,
+      "name": "tileset_dungeon.png",
+      "path": "/chemin/vers/tileset_dungeon.png",
+      "tile_width": 16,
+      "tile_height": 16,
+      "columns": 16,
+      "rows": 16
+    }
+  ]
+}
+```
+
+**✅ Avantages :**
+- Rechargement automatique des tilesets
+- Un seul fichier pour tout le projet
+- Format JSON lisible et éditable
+- Parfait pour le développement
+
+### Format `.json` (Niveau seul)
+
+Format pour l'export vers votre moteur de jeu :
 
 ```json
 {
@@ -111,30 +219,29 @@ Les niveaux sont sauvegardés en JSON avec cette structure :
       "visible": true,
       "tiles": {
         "0,0": {"Color": [139, 69, 19]},
-        "1,0": {"Texture": {"tileset_id": 0, "tile_index": 5}},
-        "2,0": {"Color": [255, 0, 0]}
+        "1,0": {"Texture": {"tileset_id": 0, "tile_index": 5}}
       }
-    },
-    {
-      "name": "Main",
-      "visible": true,
-      "tiles": {}
     }
   ]
 }
 ```
 
-**Format des clés** : Les positions sont au format `"x,y"` (string)
-**Format des couleurs** : RGB en tableau `[R, G, B]` (0-255)
+**Format des clés** : Les positions sont au format `"x,y"` (string)  
+**Format des couleurs** : RGB en tableau `[R, G, B]` (0-255)  
+**Textures** : Référencent un tileset par ID + index de tile
+
+📖 **Guide détaillé** : [GUIDE_PROJETS.md](GUIDE_PROJETS.md)
 
 ## 🔧 Architecture
 
 ```
 src/
-├── main.rs       # Point d'entrée et boucle principale
-├── level.rs      # Structures de données (Level, Layer, TileType)
-├── editor.rs     # État de l'éditeur et logique du canvas
-└── ui.rs         # Interface utilisateur (panneaux, menus)
+├── main.rs          # Point d'entrée et boucle principale
+├── level.rs         # Structures de données (Level, Layer, TileData)
+├── editor.rs        # État de l'éditeur et logique du canvas
+├── asset_manager.rs # Gestion des tilesets et textures
+├── project.rs       # Format .editorproj avec métadonnées
+└── ui.rs            # Interface utilisateur (panneaux, menus)
 ```
 
 ## 📦 Dépendances

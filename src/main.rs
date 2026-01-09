@@ -1,6 +1,7 @@
 mod asset_manager;
 mod editor;
 mod level;
+mod project;
 mod ui;
 
 use editor::EditorState;

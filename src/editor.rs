@@ -30,6 +30,9 @@ pub struct EditorState {
     pub tileset_scroll: f32,
     pub selected_color: [u8; 3],
     pub color_hex_input: String,
+    pub notification: Option<(String, f32)>, // (message, temps restant)
+    pub last_loaded_file: Option<String>,
+    pub show_layer_config: bool,
 }
 
 impl EditorState {
@@ -49,6 +52,9 @@ impl EditorState {
             tileset_scroll: 0.0,
             selected_color: [139, 69, 19],
             color_hex_input: "#8B4513".to_string(),
+            notification: None,
+            last_loaded_file: None,
+            show_layer_config: false,
         }
     }
 
@@ -259,6 +265,19 @@ impl EditorState {
 
         if response.drag_stopped() {
             self.last_painted = None;
+        }
+    }
+
+    pub fn show_notification(&mut self, message: String) {
+        self.notification = Some((message, 3.0)); // 3 secondes
+    }
+
+    pub fn update_notification(&mut self, delta_time: f32) {
+        if let Some((_, ref mut time)) = self.notification {
+            *time -= delta_time;
+            if *time <= 0.0 {
+                self.notification = None;
+            }
         }
     }
 }

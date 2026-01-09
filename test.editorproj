@@ -1,0 +1,277 @@
+{
+  "version": "1.0",
+  "level": {
+    "name": "Nouveau Niveau",
+    "width": 64,
+    "height": 48,
+    "tile_size": 16,
+    "layers": [
+      {
+        "name": "Background",
+        "visible": true,
+        "tiles": {}
+      },
+      {
+        "name": "Main",
+        "visible": true,
+        "tiles": {
+          "-20,-20": {
+            "Texture": {
+              "tileset_id": 0,
+              "tile_index": 4
+            }
+          },
+          "0,-9": {
+            "Color": [
+              139,
+              69,
+              19
+            ]
+          },
+          "-1,-20": {
+            "Texture": {
+              "tileset_id": 0,
+              "tile_index": 5
+            }
+          },
+          "-13,-20": {
+            "Texture": {
+              "tileset_id": 0,
+              "tile_index": 5
+            }
+          },
+          "-3,-20": {
+            "Texture": {
+              "tileset_id": 0,
+              "tile_index": 5
+            }
+          },
+          "-9,-6": {
+            "Color": [
+              139,
+              69,
+              19
+            ]
+          },
+          "-5,-20": {
+            "Texture": {
+              "tileset_id": 0,
+              "tile_index": 5
+            }
+          },
+          "3,-8": {
+            "Color": [
+              139,
+              69,
+              19
+            ]
+          },
+          "-4,-20": {
+            "Texture": {
+              "tileset_id": 0,
+              "tile_index": 5
+            }
+          },
+          "-14,-20": {
+            "Texture": {
+              "tileset_id": 0,
+              "tile_index": 5
+            }
+          },
+          "2,-9": {
+            "Color": [
+              139,
+              69,
+              19
+            ]
+          },
+          "-7,-20": {
+            "Texture": {
+              "tileset_id": 0,
+              "tile_index": 5
+            }
+          },
+          "-10,-6": {
+            "Color": [
+              139,
+              69,
+              19
+            ]
+          },
+          "3,-7": {
+            "Color": [
+              139,
+              69,
+              19
+            ]
+          },
+          "-6,-20": {
+            "Texture": {
+              "tileset_id": 0,
+              "tile_index": 5
+            }
+          },
+          "-19,-20": {
+            "Texture": {
+              "tileset_id": 0,
+              "tile_index": 5
+            }
+          },
+          "4,-7": {
+            "Color": [
+              139,
+              69,
+              19
+            ]
+          },
+          "4,-8": {
+            "Color": [
+              139,
+              69,
+              19
+            ]
+          },
+          "-17,-20": {
+            "Texture": {
+              "tileset_id": 0,
+              "tile_index": 5
+            }
+          },
+          "-4,-8": {
+            "Color": [
+              139,
+              69,
+              19
+            ]
+          },
+          "3,-6": {
+            "Color": [
+              139,
+              69,
+              19
+            ]
+          },
+          "-8,-6": {
+            "Color": [
+              139,
+              69,
+              19
+            ]
+          },
+          "-10,-20": {
+            "Texture": {
+              "tileset_id": 0,
+              "tile_index": 5
+            }
+          },
+          "3,-5": {
+            "Color": [
+              139,
+              69,
+              19
+            ]
+          },
+          "-8,-20": {
+            "Texture": {
+              "tileset_id": 0,
+              "tile_index": 5
+            }
+          },
+          "2,-4": {
+            "Color": [
+              139,
+              69,
+              19
+            ]
+          },
+          "1,-9": {
+            "Color": [
+              139,
+              69,
+              19
+            ]
+          },
+          "-11,-5": {
+            "Color": [
+              139,
+              69,
+              19
+            ]
+          },
+          "-15,-20": {
+            "Texture": {
+              "tileset_id": 0,
+              "tile_index": 5
+            }
+          },
+          "-2,-20": {
+            "Texture": {
+              "tileset_id": 0,
+              "tile_index": 5
+            }
+          },
+          "3,-9": {
+            "Color": [
+              139,
+              69,
+              19
+            ]
+          },
+          "-12,-20": {
+            "Texture": {
+              "tileset_id": 0,
+              "tile_index": 5
+            }
+          },
+          "-18,-20": {
+            "Texture": {
+              "tileset_id": 0,
+              "tile_index": 5
+            }
+          },
+          "-11,-20": {
+            "Texture": {
+              "tileset_id": 0,
+              "tile_index": 5
+            }
+          },
+          "-9,-20": {
+            "Texture": {
+              "tileset_id": 0,
+              "tile_index": 5
+            }
+          },
+          "-6,-7": {
+            "Color": [
+              139,
+              69,
+              19
+            ]
+          },
+          "-16,-20": {
+            "Texture": {
+              "tileset_id": 0,
+              "tile_index": 5
+            }
+          }
+        }
+      },
+      {
+        "name": "Foreground",
+        "visible": true,
+        "tiles": {}
+      }
+    ]
+  },
+  "tilesets": [
+    {
+      "id": 0,
+      "name": "Dungeon_1.png",
+      "path": "/home/linoux/Desktop/Code~Project/assets/Cute_Fantasy_Dungeons/Dungeon_1/Dungeon_1.png",
+      "tile_width": 16,
+      "tile_height": 16,
+      "columns": 13,
+      "rows": 13
+    }
+  ]
+}

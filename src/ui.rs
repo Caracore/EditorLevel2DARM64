@@ -38,29 +38,144 @@ pub fn draw_top_panel(ctx: &egui::Context, state: &mut EditorState) {
                 if ui.button("📁 Nouveau").clicked() {
                     state.level =
                         crate::level::Level::new("Nouveau Niveau".to_string(), 64, 48, 16);
+                    state.asset_manager = crate::asset_manager::AssetManager::new();
+                    state.last_loaded_file = None;
                     ui.close_menu();
                 }
 
-                if ui.button("💾 Sauvegarder").clicked() {
+                ui.separator();
+                ui.label("💾 Sauvegarder");
+
+                if ui.button("  📦 Projet Complet (.editorproj)").clicked() {
                     if let Some(path) = rfd::FileDialog::new()
-                        .add_filter("JSON", &["json"])
+                        .add_filter("Projet Éditeur", &["editorproj"])
+                        .set_file_name("mon_niveau.editorproj")
                         .save_file()
                     {
-                        if let Err(e) = state.level.save_to_file(path.to_str().unwrap()) {
-                            eprintln!("Erreur de sauvegarde: {}", e);
+                        let path_str = path.to_str().unwrap();
+                        let mut project = crate::project::Project::new(state.level.clone());
+                        project.tilesets = state.asset_manager.get_metadata();
+                        
+                        match project.save_to_file(path_str) {
+                            Ok(_) => {
+                                state.show_notification(format!("✅ Projet sauvegardé : {} (avec {} tilesets)", 
+                                    path.file_name().unwrap().to_str().unwrap(),
+                                    project.tilesets.len()));
+                            }
+                            Err(e) => {
+                                state.show_notification(format!("❌ Erreur : {}", e));
+                                eprintln!("Erreur de sauvegarde: {}", e);
+                            }
                         }
                     }
                     ui.close_menu();
                 }
 
-                if ui.button("📂 Charger").clicked() {
+                if ui.button("  📄 Niveau seul (.json)").clicked() {
+                    if let Some(path) = rfd::FileDialog::new()
+                        .add_filter("JSON", &["json"])
+                        .set_file_name("niveau.json")
+                        .save_file()
+                    {
+                        let path_str = path.to_str().unwrap();
+                        match state.level.save_to_file(path_str) {
+                            Ok(_) => {
+                                state.show_notification(format!("✅ Niveau sauvegardé : {}", 
+                                    path.file_name().unwrap().to_str().unwrap()));
+                            }
+                            Err(e) => {
+                                state.show_notification(format!("❌ Erreur : {}", e));
+                                eprintln!("Erreur de sauvegarde: {}", e);
+                            }
+                        }
+                    }
+                    ui.close_menu();
+                }
+
+                ui.separator();
+                ui.label("📂 Charger");
+
+                if ui.button("  📦 Projet Complet (.editorproj)").clicked() {
+                    if let Some(path) = rfd::FileDialog::new()
+                        .add_filter("Projet Éditeur", &["editorproj"])
+                        .pick_file()
+                    {
+                        let path_str = path.to_str().unwrap();
+                        match crate::project::Project::load_from_file(path_str) {
+                            Ok(project) => {
+                                let filename = path.file_name().unwrap().to_str().unwrap();
+                                state.level = project.level;
+                                
+                                // Recharger tous les tilesets
+                                state.asset_manager = crate::asset_manager::AssetManager::new();
+                                let mut loaded_count = 0;
+                                let mut failed = Vec::new();
+                                
+                                for tileset_meta in &project.tilesets {
+                                    let tileset_path = std::path::PathBuf::from(&tileset_meta.path);
+                                    match state.asset_manager.load_tileset(
+                                        ctx,
+                                        tileset_path.clone(),
+                                        tileset_meta.tile_width,
+                                        tileset_meta.tile_height,
+                                    ) {
+                                        Ok(_) => loaded_count += 1,
+                                        Err(e) => {
+                                            failed.push(format!("{}: {}", tileset_meta.name, e));
+                                        }
+                                    }
+                                }
+                                
+                                state.last_loaded_file = Some(filename.to_string());
+                                state.current_layer = 1.min(state.level.layers.len() - 1);
+                                state.zoom = 1.0;
+                                state.offset = egui::Vec2::ZERO;
+                                
+                                if failed.is_empty() {
+                                    state.show_notification(format!("✅ Projet chargé : {} ({} calques, {} tilesets)", 
+                                        filename,
+                                        state.level.layers.len(),
+                                        loaded_count));
+                                } else {
+                                    state.show_notification(format!("⚠️ Projet chargé : {} ({}/{} tilesets)", 
+                                        filename, loaded_count, project.tilesets.len()));
+                                    for error in &failed {
+                                        eprintln!("⚠️ Tileset non chargé: {}", error);
+                                    }
+                                }
+                            }
+                            Err(e) => {
+                                state.show_notification(format!("❌ Erreur de chargement : {}", e));
+                                eprintln!("Erreur de chargement: {}", e);
+                            }
+                        }
+                    }
+                    ui.close_menu();
+                }
+
+                if ui.button("  📄 Niveau seul (.json)").clicked() {
                     if let Some(path) = rfd::FileDialog::new()
                         .add_filter("JSON", &["json"])
                         .pick_file()
                     {
-                        match crate::level::Level::load_from_file(path.to_str().unwrap()) {
-                            Ok(level) => state.level = level,
-                            Err(e) => eprintln!("Erreur de chargement: {}", e),
+                        let path_str = path.to_str().unwrap();
+                        match crate::level::Level::load_from_file(path_str) {
+                            Ok(level) => {
+                                let filename = path.file_name().unwrap().to_str().unwrap();
+                                state.level = level;
+                                state.last_loaded_file = Some(filename.to_string());
+                                state.current_layer = 1.min(state.level.layers.len() - 1);
+                                state.zoom = 1.0;
+                                state.offset = egui::Vec2::ZERO;
+                                state.show_notification(format!("✅ Niveau chargé : {} ({} calques, {} tiles)\n⚠️ Tilesets non chargés (utilisez .editorproj)", 
+                                    filename,
+                                    state.level.layers.len(),
+                                    state.level.layers.iter().map(|l| l.tiles.len()).sum::<usize>()));
+                            }
+                            Err(e) => {
+                                state.show_notification(format!("❌ Erreur de chargement : {}", e));
+                                eprintln!("Erreur de chargement: {}", e);
+                            }
                         }
                     }
                     ui.close_menu();
@@ -98,6 +213,13 @@ pub fn draw_top_panel(ctx: &egui::Context, state: &mut EditorState) {
                     }
                     ui.close_menu();
                 }
+                
+                ui.separator();
+                
+                if ui.button("⚙️ Configuration des calques...").clicked() {
+                    state.show_layer_config = true;
+                    ui.close_menu();
+                }
             });
 
             ui.menu_button("Affichage", |ui| {
@@ -109,6 +231,43 @@ pub fn draw_top_panel(ctx: &egui::Context, state: &mut EditorState) {
                     state.zoom = 1.0;
                     state.offset = egui::Vec2::ZERO;
                     ui.close_menu();
+                }
+                
+                ui.separator();
+                ui.label("⚙️ Configuration du Canvas");
+                
+                ui.horizontal(|ui| {
+                    ui.label("Largeur:");
+                    ui.add(egui::DragValue::new(&mut state.level.width)
+                        .speed(1.0)
+                        .clamp_range(10..=1000));
+                });
+                
+                ui.horizontal(|ui| {
+                    ui.label("Hauteur:");
+                    ui.add(egui::DragValue::new(&mut state.level.height)
+                        .speed(1.0)
+                        .clamp_range(10..=1000));
+                });
+                
+                if ui.button("🔲 Preset Petit (32x24)").clicked() {
+                    state.level.width = 32;
+                    state.level.height = 24;
+                }
+                
+                if ui.button("🔳 Preset Moyen (64x48)").clicked() {
+                    state.level.width = 64;
+                    state.level.height = 48;
+                }
+                
+                if ui.button("🔴 Preset Grand (128x96)").clicked() {
+                    state.level.width = 128;
+                    state.level.height = 96;
+                }
+                
+                if ui.button("♾️ Preset Énorme (256x256)").clicked() {
+                    state.level.width = 256;
+                    state.level.height = 256;
                 }
             });
         });
@@ -170,6 +329,7 @@ pub fn draw_side_panel(ctx: &egui::Context, state: &mut EditorState) {
             let tilesets = state.asset_manager.get_all_tilesets();
             if !tilesets.is_empty() {
                 egui::ScrollArea::vertical()
+                    .id_source("tilesets_list_scroll")
                     .max_height(200.0)
                     .show(ui, |ui| {
                         for (idx, tileset) in tilesets.iter().enumerate() {
@@ -191,6 +351,7 @@ pub fn draw_side_panel(ctx: &egui::Context, state: &mut EditorState) {
                                     let tile_display_size = 48.0;
                                     
                                     egui::ScrollArea::vertical()
+                                        .id_source(format!("tileset_tiles_scroll_{}", idx))
                                         .max_height(300.0)
                                         .show(ui, |ui| {
                                             for row in 0..(tile_count + tiles_per_row - 1) / tiles_per_row {
@@ -319,7 +480,10 @@ pub fn draw_side_panel(ctx: &egui::Context, state: &mut EditorState) {
             
             // Palette de couleurs prédéfinies
             ui.label("Couleurs prédéfinies:");
-            egui::ScrollArea::vertical().max_height(200.0).show(ui, |ui| {
+            egui::ScrollArea::vertical()
+                .id_source("preset_colors_scroll")
+                .max_height(200.0)
+                .show(ui, |ui| {
                 let preset_colors = vec![
                     ("Marron (Sol)", [139, 69, 19]),
                     ("Gris (Mur)", [128, 128, 128]),
@@ -365,6 +529,13 @@ pub fn draw_bottom_panel(ctx: &egui::Context, state: &mut EditorState) {
     egui::TopBottomPanel::bottom("bottom_panel").show(ctx, |ui| {
         ui.horizontal(|ui| {
             ui.label(format!("Niveau: {}", state.level.name));
+            
+            // Afficher le fichier chargé si disponible
+            if let Some(ref filename) = state.last_loaded_file {
+                ui.separator();
+                ui.label(format!("📂 {}", filename));
+            }
+            
             ui.separator();
             ui.label(format!(
                 "Taille: {}x{} (Tile: {}px)",
@@ -373,12 +544,121 @@ pub fn draw_bottom_panel(ctx: &egui::Context, state: &mut EditorState) {
             ui.separator();
             ui.label(format!("Zoom: {:.0}%", state.zoom * 100.0));
             ui.separator();
-            ui.label("Molette: Zoom | Clic molette: Déplacer");
+            ui.label("⇌: Zoom | 🖋️: Déplacer | Clic droit: Gomme");
         });
     });
 }
 
 pub fn draw_central_panel(ctx: &egui::Context, state: &mut EditorState) {
+    // Mettre à jour les notifications
+    state.update_notification(ctx.input(|i| i.stable_dt));
+    
+    // Fenêtre de configuration des calques
+    if state.show_layer_config {
+        egui::Window::new("⚙️ Configuration des Calques")
+            .collapsible(false)
+            .resizable(true)
+            .default_width(400.0)
+            .show(ctx, |ui| {
+                ui.heading("Gestion des calques");
+                ui.separator();
+                
+                ui.label(format!("Nombre de calques actuels : {}", state.level.layers.len()));
+                ui.add_space(10.0);
+                
+                // Liste des calques avec renommage
+                egui::ScrollArea::vertical()
+                    .id_source("layer_config_scroll")
+                    .max_height(200.0)
+                    .show(ui, |ui| {
+                        for (idx, layer) in state.level.layers.iter_mut().enumerate() {
+                            ui.horizontal(|ui| {
+                                ui.label(format!("{}.", idx + 1));
+                                
+                                let mut name = layer.name.clone();
+                                if ui.text_edit_singleline(&mut name).changed() {
+                                    layer.name = name;
+                                }
+                                
+                                ui.checkbox(&mut layer.visible, "👁");
+                                
+                                ui.label(format!("({} tiles)", layer.tiles.len()));
+                            });
+                        }
+                    });
+                
+                ui.add_space(10.0);
+                ui.separator();
+                ui.heading("Actions rapides");
+                
+                ui.horizontal(|ui| {
+                    if ui.button("➕ Ajouter calque").clicked() {
+                        let count = state.level.layers.len();
+                        state.level.add_layer(format!("Layer {}", count + 1));
+                    }
+                    
+                    if ui.button("🗑️ Tout effacer").clicked() {
+                        for layer in &mut state.level.layers {
+                            layer.clear();
+                        }
+                    }
+                });
+                
+                ui.add_space(10.0);
+                ui.separator();
+                ui.heading("Presets de calques");
+                
+                if ui.button("🎨 Setup RPG Standard (5 calques)").clicked() {
+                    state.level.layers.clear();
+                    state.level.add_layer("Fond lointain".to_string());
+                    state.level.add_layer("Arrière-plan".to_string());
+                    state.level.add_layer("Gameplay".to_string());
+                    state.level.add_layer("Décorations".to_string());
+                    state.level.add_layer("Premier plan".to_string());
+                    state.current_layer = 2; // Gameplay par défaut
+                }
+                
+                if ui.button("🏗️ Setup Parallax (7 calques)").clicked() {
+                    state.level.layers.clear();
+                    state.level.add_layer("Ciel".to_string());
+                    state.level.add_layer("Montagnes".to_string());
+                    state.level.add_layer("Arbres lointains".to_string());
+                    state.level.add_layer("Terrain".to_string());
+                    state.level.add_layer("Objets".to_string());
+                    state.level.add_layer("Arbres proches".to_string());
+                    state.level.add_layer("UI/Overlay".to_string());
+                    state.current_layer = 3; // Terrain par défaut
+                }
+                
+                if ui.button("🎮 Setup Minimal (3 calques)").clicked() {
+                    state.level.layers.clear();
+                    state.level.add_layer("Background".to_string());
+                    state.level.add_layer("Main".to_string());
+                    state.level.add_layer("Foreground".to_string());
+                    state.current_layer = 1;
+                }
+                
+                ui.add_space(10.0);
+                ui.separator();
+                
+                if ui.button("✅ Fermer").clicked() {
+                    state.show_layer_config = false;
+                }
+            });
+    }
+    
+    // Afficher la notification si elle existe
+    if let Some((ref message, time)) = state.notification {
+        egui::Window::new("📢 Notification")
+            .collapsible(false)
+            .resizable(false)
+            .anchor(egui::Align2::CENTER_TOP, [0.0, 10.0])
+            .show(ctx, |ui| {
+                ui.label(message);
+                ui.add(egui::ProgressBar::new(time / 3.0).show_percentage());
+            });
+    }
+    
     egui::CentralPanel::default().show(ctx, |ui| {
         // Panneau des calques en haut avec contrôles
         ui.horizontal(|ui| {

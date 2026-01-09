@@ -1,0 +1,1262 @@
+{
+  "name": "Nouveau Niveau",
+  "width": 64,
+  "height": 48,
+  "tile_size": 16,
+  "layers": [
+    {
+      "name": "Background",
+      "visible": true,
+      "tiles": {}
+    },
+    {
+      "name": "Main",
+      "visible": true,
+      "tiles": {
+        "-7,-8": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "-1,-8": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "10,7": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "13,-1": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "23,22": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "25,23": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "14,1": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "-9,17": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "31,-7": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "7,-2": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "-18,-18": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "27,19": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "-5,22": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "-1,24": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "21,11": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "10,24": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "-14,0": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "20,11": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "7,6": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "0,21": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "-5,6": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "17,-1": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "9,8": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "-10,14": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "1,-5": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "0,18": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "3,12": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "18,18": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "15,24": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "0,22": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "13,0": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "25,22": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "17,-6": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "21,21": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "12,24": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "1,18": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "18,-2": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "-11,12": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "-13,-12": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "18,-4": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "3,-10": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "10,14": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "28,15": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "4,3": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "-1,27": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "-8,-9": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "28,18": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "13,23": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "32,-6": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "27,-9": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "12,-9": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "22,11": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "1,27": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "17,-8": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "22,19": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "4,-3": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "-11,5": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "17,11": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "4,25": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "-8,19": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "9,23": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "10,3": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "4,8": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "10,-1": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "3,-4": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "-14,4": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "0,7": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "5,8": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "-3,22": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "-3,-6": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "22,-9": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "12,-7": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "2,10": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "1,15": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "12,23": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "10,4": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "-4,22": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "9,4": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "8,23": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "2,14": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "13,30": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "1,24": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "-10,15": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "15,29": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "20,20": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "-2,21": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "-12,-2": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "-15,2": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "-16,-15": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "-5,-7": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "-11,-3": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "18,-1": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "2,23": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "15,12": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "5,26": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "16,27": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "23,18": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "25,-10": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "4,26": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "12,-1": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "14,-9": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "12,13": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "14,30": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "28,-3": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "8,-10": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "16,26": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "21,19": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "23,-2": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "14,23": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "26,21": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "-10,-4": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "-17,-16": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "6,-2": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "32,-3": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "11,23": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "9,-2": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "8,8": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "-17,4": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "8,28": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "15,28": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "9,-10": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "23,23": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "12,-4": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "5,9": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "28,-8": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "27,14": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "17,22": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "-2,20": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "-17,-17": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "16,-1": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "-16,4": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "22,22": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "-19,-20": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "18,17": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "3,26": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "26,13": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "33,-3": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "12,-2": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "24,17": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "-8,-5": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "2,26": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "-11,-11": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "-3,6": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "2,7": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "19,20": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "28,16": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "8,-5": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "4,24": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "10,6": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "5,25": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "24,11": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "-15,-14": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "26,-9": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "9,29": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "14,-8": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "-14,-13": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "13,-9": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "-6,21": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "7,8": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "5,0": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "3,5": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "3,8": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "14,0": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "17,-5": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "5,7": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "33,-4": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "11,29": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "20,21": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "1,-9": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "-3,-8": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "2,13": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "0,27": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "6,-10": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "0,17": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "25,12": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "11,2": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "3,10": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "28,14": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "24,-10": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "16,13": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "3,24": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "6,17": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "6,25": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "-11,13": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "8,5": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "19,21": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "12,29": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "7,24": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "10,29": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "-1,23": {
+          "Color": [
+            128,
+            0,
+            128
+          ]
+        },
+        "-13,-1": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "7,28": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "24,23": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "6,26": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        },
+        "23,11": {
+          "Texture": {
+            "tileset_id": 0,
+            "tile_index": 4
+          }
+        }
+      }
+    },
+    {
+      "name": "Foreground",
+      "visible": true,
+      "tiles": {}
+    }
+  ]
+}
