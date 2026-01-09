@@ -1,0 +1,42 @@
+{
+  "name": "Exemple avec Couleurs Personnalisées",
+  "width": 64,
+  "height": 48,
+  "tile_size": 16,
+  "layers": [
+    {
+      "name": "Arrière-plan",
+      "visible": true,
+      "tiles": {
+        "0,0": {"Color": [135, 206, 235]},
+        "1,0": {"Color": [135, 206, 235]},
+        "2,0": {"Color": [135, 206, 235]},
+        "3,0": {"Color": [135, 206, 235]},
+        "0,1": {"Color": [135, 206, 235]},
+        "1,1": {"Color": [135, 206, 235]},
+        "2,1": {"Color": [135, 206, 235]},
+        "3,1": {"Color": [135, 206, 235]}
+      }
+    },
+    {
+      "name": "Terrain",
+      "visible": true,
+      "tiles": {
+        "0,5": {"Color": [139, 69, 19]},
+        "1,5": {"Color": [139, 69, 19]},
+        "2,5": {"Color": [139, 69, 19]},
+        "3,5": {"Color": [139, 69, 19]},
+        "4,5": {"Color": [139, 69, 19]},
+        "5,5": {"Color": [139, 69, 19]}
+      }
+    },
+    {
+      "name": "Décorations",
+      "visible": true,
+      "tiles": {
+        "2,4": {"Color": [0, 128, 0]},
+        "4,2": {"Color": [255, 215, 0]}
+      }
+    }
+  ]
+}

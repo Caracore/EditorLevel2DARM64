@@ -1,0 +1,41 @@
+# Éditeur de Niveaux - Exemple de niveau
+{
+  "name": "Niveau Exemple",
+  "width": 32,
+  "height": 24,
+  "tile_size": 32,
+  "layers": [
+    {
+      "name": "Background",
+      "visible": true,
+      "tiles": {}
+    },
+    {
+      "name": "Main",
+      "visible": true,
+      "tiles": {
+        "0,10": "Ground",
+        "1,10": "Ground",
+        "2,10": "Ground",
+        "3,10": "Ground",
+        "4,10": "Ground",
+        "5,10": "Ground",
+        "6,10": "Ground",
+        "7,10": "Ground",
+        "8,10": "Ground",
+        "9,10": "Ground",
+        "10,10": "Ground",
+        "2,9": "Wall",
+        "2,8": "Wall",
+        "5,9": "Coin",
+        "1,6": "Spawn",
+        "9,6": "Exit"
+      }
+    },
+    {
+      "name": "Foreground",
+      "visible": true,
+      "tiles": {}
+    }
+  ]
+}

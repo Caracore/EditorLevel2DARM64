@@ -1,0 +1,39 @@
+{
+  "name": "Exemple Niveau Multi-Calques",
+  "width": 64,
+  "height": 48,
+  "tile_size": 16,
+  "layers": [
+    {
+      "name": "Arrière-plan",
+      "visible": true,
+      "tiles": {
+        "0,0": {"Color": "Ground"},
+        "1,0": {"Color": "Ground"},
+        "2,0": {"Color": "Ground"},
+        "3,0": {"Color": "Ground"}
+      }
+    },
+    {
+      "name": "Décor",
+      "visible": true,
+      "tiles": {
+        "1,1": {"Color": "Wall"}
+      }
+    },
+    {
+      "name": "Gameplay",
+      "visible": true,
+      "tiles": {
+        "0,2": {"Color": "Spawn"},
+        "10,2": {"Color": "Coin"},
+        "20,2": {"Color": "Exit"}
+      }
+    },
+    {
+      "name": "Premier Plan",
+      "visible": true,
+      "tiles": {}
+    }
+  ]
+}
