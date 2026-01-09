@@ -72,6 +72,11 @@ cargo build --release
 cargo run --release
 ```
 
+**💡 Installation facile sur Raspberry Pi :**
+```bash
+./install.sh  # Installe tout automatiquement!
+```
+
 ## 🎨 Utilisation
 
 ### 🔄 Workflow : Créer, Sauvegarder, Rééditer
@@ -250,11 +255,64 @@ src/
 - **serde/serde_json** : Sérialisation des niveaux
 - **rfd** : Dialogues de fichiers natifs
 
+## 🛠️ Installation sur Raspberry Pi OS ARM64
+
+Des scripts d'installation et de désinstallation sont fournis pour faciliter l'installation sur Raspberry Pi :
+
+```bash
+# Installation
+./install.sh
+
+# Lancer l'éditeur
+editor_level
+
+# Désinstallation
+./uninstall.sh
+```
+
+Le script d'installation s'occupe de :
+- Installer Rust si nécessaire
+- Installer toutes les dépendances système
+- Compiler le programme
+- Créer un raccourci dans le menu
+- Configurer le PATH
+
+📖 **Plus de détails** : Les scripts incluent des messages détaillés à chaque étape.
+
 ## 🎯 Utilisation dans un jeu
 
 Le format JSON est **100% compatible** avec les moteurs de jeux populaires comme **Pygame**, **Bevy**, **Godot**, etc.
 
-### Intégration Pygame
+### 🚀 Parsers Officiels Disponibles
+
+Des parsers prêts à l'emploi sont fournis dans le dossier [`parsers/`](parsers/) :
+
+#### 🐍 Pygame (Python)
+```python
+from parsers.pygame_parser import EditorLevelLoader
+
+loader = EditorLevelLoader("mon_niveau.editorproj")
+loader.render(screen, camera_x=0, camera_y=0)
+```
+
+#### 🦀 Bevy (Rust)
+```rust
+use parsers::bevy_parser::*;
+
+commands.spawn(EditorLevelBundle::from_file(
+    "assets/levels/mon_niveau.editorproj",
+    &asset_server,
+));
+```
+
+📖 **Documentation complète** : [GUIDE_PARSERS.md](GUIDE_PARSERS.md)  
+📦 **Dossier des parsers** : [parsers/](parsers/)
+
+### Intégration Manuelle
+
+### Intégration Manuelle (si vous ne voulez pas utiliser les parsers)
+
+#### Pygame (Python)
 
 ```python
 import json
@@ -293,7 +351,7 @@ for layer in level["layers"]:
                        (tile_x, tile_y, 16, 16))
 ```
 
-### Intégration Bevy (Rust)
+#### Bevy (Rust)
 
 ```rust
 use serde::{Deserialize, Serialize};
