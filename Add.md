@@ -33,6 +33,8 @@
   - Guide d'intégration
 
 ## 🚀 À Faire
+- Activer le mode selection.
+- L'annulation le performer.
 
 ### Parsers Supplémentaires
 - [ ] Parser pour Unity (C#)

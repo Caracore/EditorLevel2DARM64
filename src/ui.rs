@@ -287,19 +287,100 @@ pub fn draw_side_panel(ctx: &egui::Context, state: &mut EditorState) {
                     .clicked()
                 {
                     state.current_tool = Tool::Paint;
+                    state.selection.start = None;
+                    state.selection.end = None;
                 }
                 if ui
                     .selectable_label(state.current_tool == Tool::Erase, "🧹 Gomme")
                     .clicked()
                 {
                     state.current_tool = Tool::Erase;
+                    state.selection.start = None;
+                    state.selection.end = None;
                 }
                 if ui
                     .selectable_label(state.current_tool == Tool::Select, "📦 Sélection")
                     .clicked()
                 {
                     state.current_tool = Tool::Select;
+                    state.selection.start = None;
+                    state.selection.end = None;
                 }
+            });
+            
+            ui.horizontal(|ui| {
+                if ui
+                    .selectable_label(state.current_tool == Tool::LineFill, "📏 Ligne")
+                    .on_hover_text("Remplir en ligne (horizontal ou vertical)")
+                    .clicked()
+                {
+                    state.current_tool = Tool::LineFill;
+                    state.selection.start = None;
+                    state.selection.end = None;
+                }
+                if ui
+                    .selectable_label(state.current_tool == Tool::RectFill, "⬛ Carré")
+                    .on_hover_text("Remplir en rectangle")
+                    .clicked()
+                {
+                    state.current_tool = Tool::RectFill;
+                    state.selection.start = None;
+                    state.selection.end = None;
+                }
+            });
+            
+            // Afficher l'instruction pour les outils de sélection
+            if state.current_tool == Tool::LineFill || state.current_tool == Tool::RectFill {
+                ui.add_space(5.0);
+                if state.selection.start.is_none() {
+                    ui.label("👉 Cliquez pour le point de départ");
+                } else {
+                    ui.label("👉 Cliquez pour le point d'arrivée");
+                    ui.label("   (clic droit pour annuler)");
+                }
+            }
+            
+            // Instructions pour le mode Sélection
+            if state.current_tool == Tool::Select {
+                ui.add_space(5.0);
+                ui.label("📦 Mode Sélection");
+                ui.label("• Glissez pour sélectionner");
+                ui.label("• Ctrl+C : Copier");
+                ui.label("• Ctrl+V : Coller");
+                ui.label("• Delete : Supprimer");
+                ui.label("• Echap : Annuler");
+                
+                if state.selection.is_active {
+                    ui.label("✅ Sélection active");
+                }
+                if state.clipboard.is_some() {
+                    ui.label("📋 Presse-papier plein");
+                }
+            }
+            
+            ui.add_space(10.0);
+            
+            // Raccourcis globaux
+            ui.heading("⌨️ Raccourcis");
+            ui.separator();
+            ui.label("Ctrl+Z : Annuler");
+            ui.label("Ctrl+Y : Rétablir");
+            
+            // Indicateurs d'état
+            ui.add_space(5.0);
+            ui.horizontal(|ui| {
+                let undo_color = if state.can_undo() {
+                    egui::Color32::GREEN
+                } else {
+                    egui::Color32::GRAY
+                };
+                let redo_color = if state.can_redo() {
+                    egui::Color32::GREEN
+                } else {
+                    egui::Color32::GRAY
+                };
+                ui.colored_label(undo_color, "↶");
+                ui.colored_label(redo_color, "↷");
             });
 
             ui.add_space(10.0);

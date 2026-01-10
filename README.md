@@ -47,8 +47,16 @@ Un éditeur de niveaux professionnel pour créer des maps de jeux RPG 2D, compat
 - **Outils d'édition**:
   - ✏️ Pinceau pour placer des tiles (couleurs ou textures)
   - 🧹 Gomme pour effacer
+  - � **Remplissage en Ligne** (NOUVEAU! ⭐) : remplir rapidement en horizontal/vertical
+  - ⬛ **Remplissage en Rectangle** (NOUVEAU! ⭐) : remplir des zones rectangulaires
+  - 📦 **Sélection** (NOUVEAU! ⭐) : copier, coller, supprimer des zones
   - 🖱️ Clic droit = gomme rapide
-  - 📦 Sélection (à venir)
+  
+- **Système Undo/Redo** (NOUVEAU! ⭐):
+  - ↶ Ctrl+Z : Annuler (jusqu'à 50 actions)
+  - ↷ Ctrl+Y : Rétablir
+  - Historique intelligent par session
+  - Indicateurs visuels de disponibilité
   
 - **Types de tiles couleur** (compatibilité):
   - Sol, Mur, Plateforme
@@ -114,6 +122,39 @@ cargo run --release
 
 📖 **Guide complet** : [GUIDE_PROJETS.md](GUIDE_PROJETS.md)
 📖 **Détails techniques** : [GUIDE_CHARGER.md](GUIDE_CHARGER.md)
+
+### 🖌️ Outils de Remplissage (NOUVEAU!)
+
+#### 📏 Remplissage en Ligne
+Remplissez rapidement des lignes horizontales ou verticales :
+1. Sélectionnez l'outil **📏 Ligne**
+2. Choisissez une couleur ou un tileset
+3. **Clic 1** : Point de départ
+4. **Clic 2** : Point d'arrivée
+5. La ligne se remplit automatiquement !
+   - Direction horizontale si vous bougez plus à gauche/droite
+   - Direction verticale si vous bougez plus en haut/bas
+
+**💡 Astuce** : Idéal pour créer des bordures, murs, ou chemins !
+
+#### ⬛ Remplissage en Rectangle
+Remplissez rapidement des zones rectangulaires entières :
+1. Sélectionnez l'outil **⬛ Carré**
+2. Choisissez une couleur ou un tileset
+3. **Clic 1** : Un coin du rectangle
+4. **Clic 2** : Le coin opposé
+5. Tout le rectangle est rempli !
+
+**💡 Astuce** : Parfait pour les sols, plateformes, et grandes zones uniformes !
+
+#### Prévisualisation et Annulation
+- **Prévisualisation** : Bougez la souris après le 1er clic pour voir la zone
+  - Cyan pour l'outil Ligne
+  - Orange pour l'outil Rectangle
+- **Annuler** : Clic droit pour annuler la sélection en cours
+- **Notification** : "✅ X tiles remplis" après chaque remplissage
+
+📖 **Guide détaillé** : [GUIDE_REMPLISSAGE.md](GUIDE_REMPLISSAGE.md)
 
 ### Barre de menu
 - **Fichier** : 
