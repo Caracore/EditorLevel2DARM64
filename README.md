@@ -156,6 +156,31 @@ Remplissez rapidement des zones rectangulaires entières :
 
 📖 **Guide détaillé** : [GUIDE_REMPLISSAGE.md](GUIDE_REMPLISSAGE.md)
 
+### 🔄 Undo/Redo et Sélection (NOUVEAU!)
+
+#### Système d'Annulation
+Faites des erreurs sans crainte ! Le système conserve les 50 dernières actions :
+- **Ctrl+Z** : Annuler la dernière action
+- **Ctrl+Y** : Rétablir une action annulée
+- Indicateurs visuels ↶↷ dans le panneau latéral
+
+#### Mode Sélection 📦
+Gérez efficacement de grandes zones :
+1. Sélectionnez l'outil **📦 Sélection**
+2. Glissez pour sélectionner une zone (contour jaune)
+3. **Ctrl+C** : Copier la sélection
+4. **Ctrl+V** : Coller à la position de la souris
+5. **Delete** : Supprimer la zone sélectionnée
+6. **Échap** : Annuler la sélection
+
+**💡 Cas d'usage** :
+- Dupliquer des éléments répétitifs (arbres, bâtiments)
+- Déplacer des zones complètes
+- Créer des motifs répétitifs rapidement
+- Nettoyer de grandes zones
+
+📖 **Guide complet** : [GUIDE_UNDO_SELECTION.md](GUIDE_UNDO_SELECTION.md)
+
 ### Barre de menu
 - **Fichier** : 
   - 📁 Nouveau : Créer un niveau vierge

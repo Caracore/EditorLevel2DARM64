@@ -1,0 +1,25 @@
+# Fichiers de build Rust/Cargo
+/target/
+**/*.rs.bk
+*.pdb
+
+# Fichiers de debug
+Cargo.lock
+
+# Fichiers temporaires du système
+.DS_Store
+Thumbs.db
+
+# Fichiers de l'éditeur/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Fichiers de backup
+*.bak
+*~
+
+# Logs
+*.log
